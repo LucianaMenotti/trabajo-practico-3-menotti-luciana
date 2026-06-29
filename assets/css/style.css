@@ -1,0 +1,72 @@
+body {
+  background-color: #eef2f7;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: bold;
+  color: #1a1a2e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.card {
+  border: 3px solid #ffd90f;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: contain;
+  background-color: #ffd90f;
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.status-alive {
+  color: green;
+  font-weight: bold;
+}
+
+.status-deceased {
+  color: red;
+  font-weight: bold;
+}
+
+.modal-header {
+  background-color: #ffd90f;
+  border-bottom: 2px solid #1a1a2e;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+#modalImage {
+  max-height: 250px;
+  width: 100%;
+  object-fit: contain;
+  background-color: #ffd90f;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.modal-phrase {
+  font-style: italic;
+  color: #1565c0;
+  border-left: 4px solid #ffd90f;
+  padding-left: 15px;
+  margin-top: 10px;
+  font-size: 16px;
+}
