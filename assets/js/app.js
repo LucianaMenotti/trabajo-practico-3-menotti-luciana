@@ -81,3 +81,33 @@ function renderizarTarjetas(lista) {
     contenedor.appendChild(columna);
   });
 }
+
+function filtrarPersonajes() {
+  const textoBuscado = document.getElementById('searchInput').value;
+  
+  if (textoBuscado.trim() === '') {
+    return;
+  }
+  
+  const textoEnMinusculas = textoBuscado.toLowerCase();
+  
+  const resultados = listaPersonajes.filter(function(personaje) {
+    const nombreMinusculas = personaje.name.toLowerCase();
+    return nombreMinusculas.includes(textoEnMinusculas);
+  });
+  
+  renderizarTarjetas(resultados);
+}
+
+document.getElementById('searchBtn').addEventListener('click', filtrarPersonajes);
+
+document.getElementById('searchInput').addEventListener('keyup', function(evento) {
+  if (evento.key === 'Enter') {
+    filtrarPersonajes();
+  }
+});
+
+document.getElementById('clearBtn').addEventListener('click', function() {
+  document.getElementById('searchInput').value = '';
+  renderizarTarjetas(listaPersonajes);
+});
