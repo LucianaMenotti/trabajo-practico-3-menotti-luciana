@@ -64,7 +64,7 @@ function renderizarTarjetas(lista) {
 
     columna.innerHTML = `
       <div class="card h-100">
-        <img src="${armarImagen(personaje.image)}" class="card-img-top" alt="${personaje.name}">
+        <img src="${armarImagen(personaje.portrait_path)}" class="card-img-top" alt="${personaje.name}">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">${personaje.name}</h5>
           <p class="card-text mb-1"><strong>Ocupación:</strong> ${personaje.occupation}</p>
@@ -149,7 +149,7 @@ function mostrarModal(personaje) {
   const frase = obtenerFrase(personaje);
 
   document.getElementById('titulo-modal').textContent = personaje.name;
-  document.getElementById('imagenModal').src = armarImagen(personaje.image);
+  document.getElementById('imagenModal').src = armarImagen(personaje.portrait_path);
   document.getElementById('imagenModal').alt = personaje.name;
   document.getElementById('edad-modal').textContent = verificarDato(personaje.age);
   document.getElementById('nacimientoModal').textContent = verificarDato(personaje.birthdate);

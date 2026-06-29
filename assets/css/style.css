@@ -43,30 +43,26 @@ h1 {
   color: red;
   font-weight: bold;
 }
-
-.modal-header {
-  background-color: #ffd90f;
-  border-bottom: 2px solid #1a1a2e;
-}
-
-.modal-title {
-  font-weight: bold;
-}
-
-#modalImage {
-  max-height: 250px;
+#imagenModal {
   width: 100%;
+  max-height: 280px;
   object-fit: contain;
-  background-color: #ffd90f;
+  background-color: var(--yellow);
   border-radius: 10px;
   padding: 10px;
 }
 
+.modal-body .row {
+  align-items: flex-start;
+}
+
 .modal-phrase {
   font-style: italic;
-  color: #1565c0;
-  border-left: 4px solid #ffd90f;
-  padding-left: 15px;
-  margin-top: 10px;
-  font-size: 16px;
+  color: var(--blue);
+  border-left: 4px solid var(--yellow);
+  padding-left: 0.75rem;
+  margin: 0;
+  font-size: 0.95rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
