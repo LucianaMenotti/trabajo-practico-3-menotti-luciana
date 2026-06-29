@@ -111,3 +111,19 @@ document.getElementById('clearBtn').addEventListener('click', function() {
   document.getElementById('searchInput').value = '';
   renderizarTarjetas(listaPersonajes);
 });
+
+async function obtenerDetallePersonaje(id) {
+  try {
+    const respuesta = await fetch(urlDetalle + id);
+    
+    if (!respuesta.ok) {
+      throw new Error("Error " + respuesta.status + ": no se pudo cargar el detalle del personaje.");
+    }
+    
+    const datos = await respuesta.json();
+    mostrarModal(datos);
+    
+  } catch (error) {
+    console.log("Hubo un error al buscar el detalle:", error);
+  }
+}
