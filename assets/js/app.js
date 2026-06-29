@@ -11,19 +11,20 @@ function armarImagen(ruta) {
 async function cargarPersonajes() {
   try {
     const respuesta = await fetch(urlApi);
-    
+
     if (!respuesta.ok) {
       throw new Error("Error " + respuesta.status + ": no se pudo cargar la lista de personajes.");
     }
-    
+
     const data = await respuesta.json();
-    
-    data.forEach(function(personaje) {
+    const personajes = data.results;
+
+    personajes.forEach(function(personaje) {
       listaPersonajes.push(personaje);
     });
-    
+
     renderizarTarjetas(listaPersonajes);
-    
+
   } catch (error) {
     console.error(error.message);
   }
@@ -47,20 +48,20 @@ function obtenerClaseEstado(estado) {
 
 function renderizarTarjetas(lista) {
   limpiarResultados();
-  
+
   if (lista.length === 0) {
     document.getElementById('mensaje-no-resultados').style.display = 'block';
     return;
   }
-  
+
   const contenedor = document.getElementById('cardsContainer');
-  
+
   lista.forEach(function(personaje) {
     const columna = document.createElement('div');
     columna.className = 'col-md-4 mb-4';
-    
+
     const claseEstado = obtenerClaseEstado(personaje.status);
-    
+
     columna.innerHTML = `
       <div class="card h-100">
         <img src="${armarImagen(personaje.image)}" class="card-img-top" alt="${personaje.name}">
@@ -68,7 +69,7 @@ function renderizarTarjetas(lista) {
           <h5 class="card-title">${personaje.name}</h5>
           <p class="card-text mb-1"><strong>Ocupación:</strong> ${personaje.occupation}</p>
           <p class="card-text mb-3">
-            <strong>Estado:</strong> 
+            <strong>Estado:</strong>
             <span class="${claseEstado}">${personaje.status}</span>
           </p>
           <button class="btn btn-warning mt-auto btn-detalle" data-id="${personaje.id}">
@@ -77,25 +78,25 @@ function renderizarTarjetas(lista) {
         </div>
       </div>
     `;
-    
+
     contenedor.appendChild(columna);
   });
 }
 
 function filtrarPersonajes() {
   const textoBuscado = document.getElementById('searchInput').value;
-  
+
   if (textoBuscado.trim() === '') {
     return;
   }
-  
+
   const textoEnMinusculas = textoBuscado.toLowerCase();
-  
+
   const resultados = listaPersonajes.filter(function(personaje) {
     const nombreMinusculas = personaje.name.toLowerCase();
     return nombreMinusculas.includes(textoEnMinusculas);
   });
-  
+
   renderizarTarjetas(resultados);
 }
 
